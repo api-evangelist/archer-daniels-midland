@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Archer Daniels Midland Commodity Data API
+  description: >-
+    The Archer Daniels Midland (ADM) Commodity Data API represents ADM's
+    data integration capabilities for agricultural commodity pricing,
+    supply chain logistics, and product information. ADM is a global
+    leader in agricultural processing and food ingredient manufacturing,
+    and this API supports partner integrations for commodity data access.
+  version: '1.0'
+servers:
+  - url: https://api.adm.com
+tags:
+  - name: Commodities
+    description: Access commodity pricing and market data.
+  - name: Products
+    description: Browse ADM product catalog and specifications.
+  - name: Locations
+    description: Access ADM facility and processing plant locations.
+paths:
+  /commodities:
+    get:
+      operationId: listCommodities
+      summary: List commodities
+      description: >-
+        Retrieves a list of agricultural commodities with current pricing,
+        market trends, and availability information.
+      tags:
+        - Commodities
+      parameters:
+        - name: type
+          in: query
+          description: Filter by commodity type (e.g., corn, soybeans, wheat).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /products:
+    get:
+      operationId: listProducts
+      summary: List products
+      description: >-
+        Retrieves a list of ADM processed food ingredients and agricultural
+        products with specifications and nutritional data.
+      tags:
+        - Products
+      responses:
+        '200':
+          description: Success
+  /locations:
+    get:
+      operationId: listLocations
+      summary: List locations
+      description: >-
+        Retrieves a list of ADM processing facilities, grain elevators,
+        and distribution centers with location and capability details.
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Success
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
