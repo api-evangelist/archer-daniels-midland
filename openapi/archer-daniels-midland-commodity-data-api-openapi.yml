@@ -13,10 +13,10 @@ servers:
 tags:
   - name: Commodities
     description: Access commodity pricing and market data.
-  - name: Products
-    description: Browse ADM product catalog and specifications.
   - name: Locations
     description: Access ADM facility and processing plant locations.
+  - name: Products
+    description: Browse ADM product catalog and specifications.
 paths:
   /commodities:
     get:
