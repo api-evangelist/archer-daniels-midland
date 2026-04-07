@@ -1,5 +1,6 @@
 aid: archer-daniels-midland
-url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/apis.yml
 apis:
   - aid: archer-daniels-midland:commodity-data-api
     name: Archer Daniels Midland Commodity Data API
@@ -8,7 +9,8 @@ apis:
       - Commodities
       - Food Processing
       - Supply Chain
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.adm.com
     humanURL: https://www.adm.com/en-us/
     properties:
@@ -17,4 +19,12 @@ apis:
       - url: openapi/archer-daniels-midland-commodity-data-api-openapi.yml
         type: OpenAPI
     description: >-
-      Archer Daniels Midland (ADM) is a global leader in agricultural processing and food ingredient manufacturing. While ADM does not currently offer a widely publicized public developer API portal, the company leverages API integrations internally for supply chain management, commodity trading data, and logistics operations. This specification represents the potential scope of ADM's data integration capabilities.
+      Archer Daniels Midland (ADM) is a global leader in agricultural processing and
+      food ingredient manufacturing. While ADM does not currently offer a widely publicized
+      public developer API portal, the company leverages API integrations internally
+      for supply chain management, commodity trading data, and logistics operations.
+      This specification represents the potential scope of ADM's data integration
+      capabilities.
+description: >-
+  Food is fundamental. Food sustains us, fulfills us and fuels our well-being—and
+  ADM is devoted to that impact every single day.
