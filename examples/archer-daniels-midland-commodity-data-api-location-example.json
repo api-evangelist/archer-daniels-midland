@@ -1,0 +1,10 @@
+{
+  "id": "ADM-DEC-001",
+  "name": "Decatur Processing Complex",
+  "type": "processing-plant",
+  "country": "US",
+  "state": "IL",
+  "city": "Decatur",
+  "latitude": 39.8403,
+  "longitude": -88.9548
+}

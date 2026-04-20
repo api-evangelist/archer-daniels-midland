@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique commodity identifier",
+      "example": "CORN-US"
+    },
+    "name": {
+      "type": "string",
+      "description": "Commodity display name",
+      "example": "Yellow Corn"
+    },
+    "type": {
+      "type": "string",
+      "description": "Commodity type",
+      "enum": [
+        "corn",
+        "soybeans",
+        "wheat",
+        "canola",
+        "sorghum",
+        "barley"
+      ],
+      "example": "corn"
+    },
+    "currentPrice": {
+      "type": "double",
+      "description": "Current market price",
+      "example": 4.85
+    },
+    "currency": {
+      "type": "string",
+      "description": "Price currency",
+      "example": "USD"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Price unit of measure",
+      "example": "bushel"
+    },
+    "priceDate": {
+      "type": "date",
+      "description": "Date of price quote",
+      "example": "2026-04-19"
+    },
+    "weekHigh": {
+      "type": "double",
+      "description": "52-week high price",
+      "example": 5.1
+    },
+    "weekLow": {
+      "type": "double",
+      "description": "52-week low price",
+      "example": 4.72
+    },
+    "volume": {
+      "type": "int32",
+      "description": "Daily trading volume in bushels",
+      "example": 125000000
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-structure/archer-daniels-midland-commodity-data-api-commodity-detail-structure.json",
+  "name": "CommodityDetail"
+}

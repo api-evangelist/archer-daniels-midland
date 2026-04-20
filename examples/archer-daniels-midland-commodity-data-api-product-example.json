@@ -1,0 +1,11 @@
+{
+  "id": "SOY-PROTEIN-CONC-001",
+  "name": "Soy Protein Concentrate",
+  "category": "proteins",
+  "applications": [
+    "meat-analogs",
+    "dairy-alternatives"
+  ],
+  "protein": 70.0,
+  "description": "High-quality soy protein concentrate for food applications"
+}

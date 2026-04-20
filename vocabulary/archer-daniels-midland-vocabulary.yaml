@@ -1,0 +1,138 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Archer Daniels Midland
+  description: Vocabulary for the ADM Commodity Data API covering agricultural commodities, food ingredients, and global facility locations.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+
+operational:
+  apis:
+    - name: Archer Daniels Midland Commodity Data API
+      namespace: adm-commodity-api
+      version: '1.0'
+      baseUrl: https://api.adm.com/v1
+      status: active
+
+  resources:
+    - name: commodities
+      description: Agricultural commodity pricing and market data
+      apis: [adm-commodity-api]
+      actions: [listCommodities, getCommodity]
+    - name: products
+      description: ADM processed food ingredients and agricultural products
+      apis: [adm-commodity-api]
+      actions: [listProducts]
+    - name: locations
+      description: Global ADM processing facilities and grain elevators
+      apis: [adm-commodity-api]
+      actions: [listLocations]
+
+  actions:
+    - name: listCommodities
+      httpMethod: GET
+      pattern: read
+      description: List agricultural commodities with pricing data
+    - name: getCommodity
+      httpMethod: GET
+      pattern: read
+      description: Get detailed commodity data
+    - name: listProducts
+      httpMethod: GET
+      pattern: read
+      description: List food ingredient products
+    - name: listLocations
+      httpMethod: GET
+      pattern: read
+      description: List ADM global facilities
+
+  schemas:
+    agriculture:
+      - name: Commodity
+        description: Agricultural commodity with pricing and availability
+        properties: [id, name, type, currentPrice, currency, unit, priceDate]
+      - name: CommodityDetail
+        description: Extended commodity data with price history
+        properties: [weekHigh, weekLow, volume]
+      - name: Product
+        description: ADM processed food ingredient
+        properties: [id, name, category, applications, protein, description]
+      - name: Location
+        description: ADM global facility with geographic coordinates
+        properties: [id, name, type, country, state, city, latitude, longitude]
+
+  parameters:
+    filters:
+      - name: type
+        description: Filter by commodity type
+      - name: region
+        description: Filter by sourcing region
+      - name: category
+        description: Filter by product category
+      - name: application
+        description: Filter by food application area
+      - name: country
+        description: Filter by country code
+
+  enums:
+    commodity_type:
+      - corn
+      - soybeans
+      - wheat
+      - canola
+      - sorghum
+      - barley
+    product_category:
+      - starches
+      - proteins
+      - oils
+      - sweeteners
+      - fibers
+      - flavors
+    facility_type:
+      - processing-plant
+      - grain-elevator
+      - distribution-center
+      - port
+
+  authentication:
+    schemes:
+      - type: apiKey
+        in: header
+        headerName: X-ADM-API-Key
+        usedBy: [ADM Commodity Data API]
+
+capability:
+  workflows: []
+  personas:
+    - id: commodity-trader
+      name: Commodity Trader
+      description: Agricultural commodity traders tracking prices and market trends
+    - id: supply-chain-manager
+      name: Supply Chain Manager
+      description: Procurement and supply chain managers sourcing agricultural inputs
+    - id: food-scientist
+      name: Food Scientist
+      description: Product developers sourcing food ingredients from ADM
+  domains:
+    - name: Agricultural Commodities
+      description: Grain and oilseed commodity pricing and market data
+    - name: Food Ingredients
+      description: Processed food ingredient catalog and specifications
+    - name: Global Operations
+      description: Worldwide processing facilities and logistics network
+  namespaces:
+    - type: consumed
+      namespace: adm-commodity-api
+  binds: []
+
+crossReference:
+  - resource: commodities
+    operations: [listCommodities, getCommodity]
+    personas: [commodity-trader, supply-chain-manager]
+  - resource: products
+    operations: [listProducts]
+    personas: [food-scientist, supply-chain-manager]
+  - resource: locations
+    operations: [listLocations]
+    personas: [supply-chain-manager]

@@ -1,0 +1,9 @@
+{
+  "id": "CORN-US",
+  "name": "Yellow Corn",
+  "type": "corn",
+  "currentPrice": 4.85,
+  "currency": "USD",
+  "unit": "bushel",
+  "priceDate": "2026-04-19"
+}

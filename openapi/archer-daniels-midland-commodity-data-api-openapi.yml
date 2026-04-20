@@ -1,67 +1,411 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   title: Archer Daniels Midland Commodity Data API
   description: >-
-    The Archer Daniels Midland (ADM) Commodity Data API represents ADM's
-    data integration capabilities for agricultural commodity pricing,
-    supply chain logistics, and product information. ADM is a global
-    leader in agricultural processing and food ingredient manufacturing,
-    and this API supports partner integrations for commodity data access.
-  version: '1.0'
+    The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural
+    commodity pricing, supply chain logistics, and product information for ADM partner
+    integrations. ADM is a Fortune 100 global leader in agricultural processing and food
+    ingredient manufacturing.
+  version: "1.0"
+  x-generated-from: documentation
+  contact:
+    name: ADM
+    url: https://www.adm.com/en-us/
 servers:
-  - url: https://api.adm.com
+  - url: https://api.adm.com/v1
+    description: ADM API Production
 tags:
   - name: Commodities
-    description: Access commodity pricing and market data.
-  - name: Locations
-    description: Access ADM facility and processing plant locations.
+    description: Agricultural commodity pricing and market data
   - name: Products
-    description: Browse ADM product catalog and specifications.
+    description: ADM food ingredients and product catalog
+  - name: Locations
+    description: ADM global facility and processing plant locations
 paths:
   /commodities:
     get:
       operationId: listCommodities
-      summary: List commodities
+      summary: Archer Daniels Midland List Commodities
       description: >-
-        Retrieves a list of agricultural commodities with current pricing,
+        Retrieve a list of agricultural commodities with current pricing,
         market trends, and availability information.
       tags:
         - Commodities
       parameters:
         - name: type
           in: query
-          description: Filter by commodity type (e.g., corn, soybeans, wheat).
+          description: Filter by commodity type (corn, soybeans, wheat, canola, etc.)
           schema:
             type: string
+            enum: [corn, soybeans, wheat, canola, sorghum, barley]
+          example: corn
+        - name: region
+          in: query
+          description: Filter by sourcing region
+          schema:
+            type: string
+          example: US-MIDWEST
       responses:
         '200':
-          description: Success
+          description: List of commodities with pricing data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommodityList'
+              examples:
+                ListCommodities200Example:
+                  summary: Default listCommodities 200 response
+                  x-microcks-default: true
+                  value:
+                    commodities:
+                      - id: CORN-US
+                        name: Yellow Corn
+                        type: corn
+                        currentPrice: 4.85
+                        currency: USD
+                        unit: bushel
+                        priceDate: "2026-04-19"
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /commodities/{commodityId}:
+    get:
+      operationId: getCommodity
+      summary: Archer Daniels Midland Get Commodity
+      description: Retrieve detailed data for a specific agricultural commodity including price history.
+      tags:
+        - Commodities
+      parameters:
+        - name: commodityId
+          in: path
+          required: true
+          description: Commodity identifier
+          schema:
+            type: string
+          example: CORN-US
+      responses:
+        '200':
+          description: Commodity details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommodityDetail'
+              examples:
+                GetCommodity200Example:
+                  summary: Default getCommodity 200 response
+                  x-microcks-default: true
+                  value:
+                    id: CORN-US
+                    name: Yellow Corn
+                    type: corn
+                    currentPrice: 4.85
+                    currency: USD
+                    unit: bushel
+                    priceDate: "2026-04-19"
+                    weekHigh: 5.10
+                    weekLow: 4.72
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Commodity not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /products:
     get:
       operationId: listProducts
-      summary: List products
+      summary: Archer Daniels Midland List Products
       description: >-
-        Retrieves a list of ADM processed food ingredients and agricultural
-        products with specifications and nutritional data.
+        Retrieve a list of ADM processed food ingredients and agricultural products
+        with specifications and nutritional data.
       tags:
         - Products
+      parameters:
+        - name: category
+          in: query
+          description: Filter by product category
+          schema:
+            type: string
+            enum: [starches, proteins, oils, sweeteners, fibers, flavors]
+          example: proteins
+        - name: application
+          in: query
+          description: Filter by application area
+          schema:
+            type: string
+          example: bakery
       responses:
         '200':
-          description: Success
+          description: List of products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+              examples:
+                ListProducts200Example:
+                  summary: Default listProducts 200 response
+                  x-microcks-default: true
+                  value:
+                    products:
+                      - id: SOY-PROTEIN-CONC-001
+                        name: Soy Protein Concentrate
+                        category: proteins
+                        applications: [meat-analogs, dairy-alternatives]
+                        protein: 70.0
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /locations:
     get:
       operationId: listLocations
-      summary: List locations
+      summary: Archer Daniels Midland List Locations
       description: >-
-        Retrieves a list of ADM processing facilities, grain elevators,
+        Retrieve a list of ADM processing facilities, grain elevators,
         and distribution centers with location and capability details.
       tags:
         - Locations
+      parameters:
+        - name: country
+          in: query
+          description: Filter by country code (ISO 3166-1 alpha-2)
+          schema:
+            type: string
+          example: US
+        - name: type
+          in: query
+          description: Filter by facility type
+          schema:
+            type: string
+            enum: [processing-plant, grain-elevator, distribution-center, port]
+          example: processing-plant
       responses:
         '200':
-          description: Success
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationList'
+              examples:
+                ListLocations200Example:
+                  summary: Default listLocations 200 response
+                  x-microcks-default: true
+                  value:
+                    locations:
+                      - id: ADM-DEC-001
+                        name: Decatur Processing Complex
+                        type: processing-plant
+                        country: US
+                        state: IL
+                        city: Decatur
+                        latitude: 39.8403
+                        longitude: -88.9548
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-ADM-API-Key
+      description: ADM API key for partner integrations
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    Commodity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique commodity identifier
+          example: CORN-US
+        name:
+          type: string
+          description: Commodity display name
+          example: Yellow Corn
+        type:
+          type: string
+          description: Commodity type
+          enum: [corn, soybeans, wheat, canola, sorghum, barley]
+          example: corn
+        currentPrice:
+          type: number
+          description: Current market price
+          example: 4.85
+        currency:
+          type: string
+          description: Price currency
+          example: USD
+        unit:
+          type: string
+          description: Price unit of measure
+          example: bushel
+        priceDate:
+          type: string
+          format: date
+          description: Date of price quote
+          example: "2026-04-19"
+    CommodityDetail:
+      allOf:
+        - $ref: '#/components/schemas/Commodity'
+        - type: object
+          properties:
+            weekHigh:
+              type: number
+              description: 52-week high price
+              example: 5.10
+            weekLow:
+              type: number
+              description: 52-week low price
+              example: 4.72
+            volume:
+              type: integer
+              description: Daily trading volume in bushels
+              example: 125000000
+    CommodityList:
+      type: object
+      properties:
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+        count:
+          type: integer
+          description: Total commodity count
+          example: 15
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product identifier
+          example: SOY-PROTEIN-CONC-001
+        name:
+          type: string
+          description: Product name
+          example: Soy Protein Concentrate
+        category:
+          type: string
+          description: Product category
+          enum: [starches, proteins, oils, sweeteners, fibers, flavors]
+          example: proteins
+        applications:
+          type: array
+          items:
+            type: string
+          description: Food and beverage application areas
+          example: [meat-analogs, dairy-alternatives]
+        protein:
+          type: number
+          description: Protein content percentage
+          example: 70.0
+        description:
+          type: string
+          description: Product description
+          example: High-quality soy protein concentrate for food applications
+    ProductList:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total product count
+          example: 250
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Location identifier
+          example: ADM-DEC-001
+        name:
+          type: string
+          description: Facility name
+          example: Decatur Processing Complex
+        type:
+          type: string
+          description: Facility type
+          enum: [processing-plant, grain-elevator, distribution-center, port]
+          example: processing-plant
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+          example: US
+        state:
+          type: string
+          description: State or region
+          example: IL
+        city:
+          type: string
+          description: City
+          example: Decatur
+        latitude:
+          type: number
+          description: Geographic latitude
+          example: 39.8403
+        longitude:
+          type: number
+          description: Geographic longitude
+          example: -88.9548
+    LocationList:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+        count:
+          type: integer
+          description: Total location count
+          example: 200
+security:
+  - apiKey: []

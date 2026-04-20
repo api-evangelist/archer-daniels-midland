@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Location identifier",
+      "example": "ADM-DEC-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Facility name",
+      "example": "Decatur Processing Complex"
+    },
+    "type": {
+      "type": "string",
+      "description": "Facility type",
+      "enum": [
+        "processing-plant",
+        "grain-elevator",
+        "distribution-center",
+        "port"
+      ],
+      "example": "processing-plant"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country code (ISO 3166-1 alpha-2)",
+      "example": "US"
+    },
+    "state": {
+      "type": "string",
+      "description": "State or region",
+      "example": "IL"
+    },
+    "city": {
+      "type": "string",
+      "description": "City",
+      "example": "Decatur"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Geographic latitude",
+      "example": 39.8403
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Geographic longitude",
+      "example": -88.9548
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-schema/archer-daniels-midland-commodity-data-api-location-schema.json",
+  "title": "Location"
+}

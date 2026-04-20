@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique commodity identifier",
+      "example": "CORN-US"
+    },
+    "name": {
+      "type": "string",
+      "description": "Commodity display name",
+      "example": "Yellow Corn"
+    },
+    "type": {
+      "type": "string",
+      "description": "Commodity type",
+      "enum": [
+        "corn",
+        "soybeans",
+        "wheat",
+        "canola",
+        "sorghum",
+        "barley"
+      ],
+      "example": "corn"
+    },
+    "currentPrice": {
+      "type": "number",
+      "description": "Current market price",
+      "example": 4.85
+    },
+    "currency": {
+      "type": "string",
+      "description": "Price currency",
+      "example": "USD"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Price unit of measure",
+      "example": "bushel"
+    },
+    "priceDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of price quote",
+      "example": "2026-04-19"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-schema/archer-daniels-midland-commodity-data-api-commodity-schema.json",
+  "title": "Commodity"
+}

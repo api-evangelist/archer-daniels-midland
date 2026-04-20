@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "adm": "https://api.adm.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ErrorResponse": "adm:ErrorResponse",
+    "message": {
+      "@id": "adm:message",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "adm:code",
+      "@type": "xsd:integer"
+    },
+    "Commodity": "adm:Commodity",
+    "id": {
+      "@id": "adm:id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "adm:name",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "adm:type",
+      "@type": "xsd:string"
+    },
+    "currentPrice": {
+      "@id": "adm:currentPrice",
+      "@type": "xsd:decimal"
+    },
+    "currency": {
+      "@id": "adm:currency",
+      "@type": "xsd:string"
+    },
+    "unit": {
+      "@id": "adm:unit",
+      "@type": "xsd:string"
+    },
+    "priceDate": {
+      "@id": "adm:priceDate",
+      "@type": "xsd:date"
+    },
+    "CommodityList": "adm:CommodityList",
+    "commodities": {
+      "@id": "adm:commodities",
+      "@type": "xsd:string"
+    },
+    "count": {
+      "@id": "adm:count",
+      "@type": "xsd:integer"
+    },
+    "Product": "adm:Product",
+    "category": {
+      "@id": "adm:category",
+      "@type": "xsd:string"
+    },
+    "applications": {
+      "@id": "adm:applications",
+      "@type": "xsd:string"
+    },
+    "protein": {
+      "@id": "adm:protein",
+      "@type": "xsd:decimal"
+    },
+    "description": {
+      "@id": "adm:description",
+      "@type": "xsd:string"
+    },
+    "ProductList": "adm:ProductList",
+    "products": {
+      "@id": "adm:products",
+      "@type": "xsd:string"
+    },
+    "Location": "adm:Location",
+    "country": {
+      "@id": "adm:country",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "adm:state",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "adm:city",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "adm:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "adm:longitude",
+      "@type": "xsd:decimal"
+    },
+    "LocationList": "adm:LocationList",
+    "locations": {
+      "@id": "adm:locations",
+      "@type": "xsd:string"
+    }
+  }
+}

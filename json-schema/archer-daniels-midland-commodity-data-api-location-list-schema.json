@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "name": {},
+          "type": {},
+          "country": {},
+          "state": {},
+          "city": {},
+          "latitude": {},
+          "longitude": {}
+        }
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total location count",
+      "example": 200
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-schema/archer-daniels-midland-commodity-data-api-location-list-schema.json",
+  "title": "LocationList"
+}

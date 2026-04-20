@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "commodities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "name": {},
+          "type": {},
+          "currentPrice": {},
+          "currency": {},
+          "unit": {},
+          "priceDate": {}
+        }
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total commodity count",
+      "example": 15
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-schema/archer-daniels-midland-commodity-data-api-commodity-list-schema.json",
+  "title": "CommodityList"
+}

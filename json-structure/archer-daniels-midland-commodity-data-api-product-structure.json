@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Product identifier",
+      "example": "SOY-PROTEIN-CONC-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name",
+      "example": "Soy Protein Concentrate"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category",
+      "enum": [
+        "starches",
+        "proteins",
+        "oils",
+        "sweeteners",
+        "fibers",
+        "flavors"
+      ],
+      "example": "proteins"
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Food and beverage application areas",
+      "example": [
+        "meat-analogs",
+        "dairy-alternatives"
+      ]
+    },
+    "protein": {
+      "type": "double",
+      "description": "Protein content percentage",
+      "example": 70.0
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description",
+      "example": "High-quality soy protein concentrate for food applications"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-structure/archer-daniels-midland-commodity-data-api-product-structure.json",
+  "name": "Product"
+}
