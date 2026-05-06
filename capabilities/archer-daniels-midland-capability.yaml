@@ -1,0 +1,237 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Archer Daniels Midland Commodity Data API
+  description: The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply
+    chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural
+    processing and food ingredient manufacturing.
+  tags:
+  - Archer
+  - Daniels
+  - Midland
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: archer-daniels-midland
+    baseUri: https://api.adm.com/v1
+    description: Archer Daniels Midland Commodity Data API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: X-ADM-API-Key
+      value: '{{ARCHER_DANIELS_MIDLAND_TOKEN}}'
+    resources:
+    - name: commodities
+      path: /commodities
+      operations:
+      - name: listcommodities
+        method: GET
+        description: Archer Daniels Midland List Commodities
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: Filter by commodity type (corn, soybeans, wheat, canola, etc.)
+        - name: region
+          in: query
+          type: string
+          description: Filter by sourcing region
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: commodities-commodityid
+      path: /commodities/{commodityId}
+      operations:
+      - name: getcommodity
+        method: GET
+        description: Archer Daniels Midland Get Commodity
+        inputParameters:
+        - name: commodityId
+          in: path
+          type: string
+          required: true
+          description: Commodity identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: products
+      path: /products
+      operations:
+      - name: listproducts
+        method: GET
+        description: Archer Daniels Midland List Products
+        inputParameters:
+        - name: category
+          in: query
+          type: string
+          description: Filter by product category
+        - name: application
+          in: query
+          type: string
+          description: Filter by application area
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: locations
+      path: /locations
+      operations:
+      - name: listlocations
+        method: GET
+        description: Archer Daniels Midland List Locations
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          description: Filter by country code (ISO 3166-1 alpha-2)
+        - name: type
+          in: query
+          type: string
+          description: Filter by facility type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: archer-daniels-midland-rest
+    description: REST adapter for Archer Daniels Midland Commodity Data API.
+    resources:
+    - path: /commodities
+      name: listcommodities
+      operations:
+      - method: GET
+        name: listcommodities
+        description: Archer Daniels Midland List Commodities
+        call: archer-daniels-midland.listcommodities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /commodities/{commodityId}
+      name: getcommodity
+      operations:
+      - method: GET
+        name: getcommodity
+        description: Archer Daniels Midland Get Commodity
+        call: archer-daniels-midland.getcommodity
+        with:
+          commodityId: rest.commodityId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /products
+      name: listproducts
+      operations:
+      - method: GET
+        name: listproducts
+        description: Archer Daniels Midland List Products
+        call: archer-daniels-midland.listproducts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /locations
+      name: listlocations
+      operations:
+      - method: GET
+        name: listlocations
+        description: Archer Daniels Midland List Locations
+        call: archer-daniels-midland.listlocations
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: archer-daniels-midland-mcp
+    transport: http
+    description: MCP adapter for Archer Daniels Midland Commodity Data API for AI agent use.
+    tools:
+    - name: listcommodities
+      description: Archer Daniels Midland List Commodities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archer-daniels-midland.listcommodities
+      with:
+        type: tools.type
+        region: tools.region
+      inputParameters:
+      - name: type
+        type: string
+        description: Filter by commodity type (corn, soybeans, wheat, canola, etc.)
+      - name: region
+        type: string
+        description: Filter by sourcing region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcommodity
+      description: Archer Daniels Midland Get Commodity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archer-daniels-midland.getcommodity
+      with:
+        commodityId: tools.commodityId
+      inputParameters:
+      - name: commodityId
+        type: string
+        description: Commodity identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listproducts
+      description: Archer Daniels Midland List Products
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archer-daniels-midland.listproducts
+      with:
+        category: tools.category
+        application: tools.application
+      inputParameters:
+      - name: category
+        type: string
+        description: Filter by product category
+      - name: application
+        type: string
+        description: Filter by application area
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listlocations
+      description: Archer Daniels Midland List Locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archer-daniels-midland.listlocations
+      with:
+        country: tools.country
+        type: tools.type
+      inputParameters:
+      - name: country
+        type: string
+        description: Filter by country code (ISO 3166-1 alpha-2)
+      - name: type
+        type: string
+        description: Filter by facility type
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ARCHER_DANIELS_MIDLAND_TOKEN: ARCHER_DANIELS_MIDLAND_TOKEN
