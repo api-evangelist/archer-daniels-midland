@@ -34,6 +34,8 @@ apis:
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/openapi/archer-daniels-midland-commodity-data-api-openapi.yml
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/archer-daniels-midland
 - type: Portal
   url: https://www.adm.com/en-us/
 - type: Features

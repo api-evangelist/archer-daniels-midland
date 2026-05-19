@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Archer Daniels Midland Commodity Data API — Locations
+  description: 'Archer Daniels Midland Commodity Data API — Locations. 1 operations. Lead operation: Archer Daniels Midland
+    List Locations. Self-contained Naftiko capability covering one Archer Daniels Midland business surface.'
+  tags:
+  - Archer Daniels Midland
+  - Locations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ARCHER_DANIELS_MIDLAND_API_KEY: ARCHER_DANIELS_MIDLAND_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commodity-data-locations
+    baseUri: https://api.adm.com/v1
+    description: Archer Daniels Midland Commodity Data API — Locations business capability. Self-contained, no shared references.
+    resources:
+    - name: locations
+      path: /locations
+      operations:
+      - name: listlocations
+        method: GET
+        description: Archer Daniels Midland List Locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          description: Filter by country code (ISO 3166-1 alpha-2)
+        - name: type
+          in: query
+          type: string
+          description: Filter by facility type
+    authentication:
+      type: apikey
+      key: X-ADM-API-Key
+      value: '{{env.ARCHER_DANIELS_MIDLAND_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: commodity-data-locations-rest
+    port: 8080
+    description: REST adapter for Archer Daniels Midland Commodity Data API — Locations. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/locations
+      name: locations
+      description: REST surface for locations.
+      operations:
+      - method: GET
+        name: listlocations
+        description: Archer Daniels Midland List Locations
+        call: commodity-data-locations.listlocations
+        with:
+          country: rest.country
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commodity-data-locations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Archer Daniels Midland Commodity Data API — Locations. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: archer-daniels-midland-list-locations
+      description: Archer Daniels Midland List Locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commodity-data-locations.listlocations
+      with:
+        country: tools.country
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
