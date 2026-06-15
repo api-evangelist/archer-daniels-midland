@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Archer Daniels Midland Commodity Data API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ADM-API-Key",
+      "value": "{{X-ADM-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commodities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Commodities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/commodities",
+            "params": [
+              {
+                "name": "type",
+                "value": "corn",
+                "type": "query",
+                "description": "Filter by commodity type (corn, soybeans, wheat, canola, etc.)"
+              },
+              {
+                "name": "region",
+                "value": "US-MIDWEST",
+                "type": "query",
+                "description": "Filter by sourcing region"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of agricultural commodities with current pricing, market trends, and availability information."
+        },
+        {
+          "info": {
+            "name": "Archer Daniels Midland Get Commodity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/commodities/:commodityId",
+            "params": [
+              {
+                "name": "commodityId",
+                "value": "CORN-US",
+                "type": "path",
+                "description": "Commodity identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve detailed data for a specific agricultural commodity including price history."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/products",
+            "params": [
+              {
+                "name": "category",
+                "value": "proteins",
+                "type": "query",
+                "description": "Filter by product category"
+              },
+              {
+                "name": "application",
+                "value": "bakery",
+                "type": "query",
+                "description": "Filter by application area"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of ADM processed food ingredients and agricultural products with specifications and nutritional data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/locations",
+            "params": [
+              {
+                "name": "country",
+                "value": "US",
+                "type": "query",
+                "description": "Filter by country code (ISO 3166-1 alpha-2)"
+              },
+              {
+                "name": "type",
+                "value": "processing-plant",
+                "type": "query",
+                "description": "Filter by facility type"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of ADM processing facilities, grain elevators, and distribution centers with location and capability details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
