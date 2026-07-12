@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/archer-daniels-midland-commodity-data-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-ADM-API-Key
+  description: ADM API key for partner integrations
+  sources:
+  - openapi/archer-daniels-midland-commodity-data-api-openapi.yml

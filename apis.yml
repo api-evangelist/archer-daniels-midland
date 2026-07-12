@@ -34,6 +34,10 @@ apis:
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/openapi/archer-daniels-midland-commodity-data-api-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/archer-daniels-midland-domain-security.yml
+  - type: Authentication
+    url: authentication/archer-daniels-midland-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/archer-daniels-midland
   - type: Portal
@@ -76,6 +80,8 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/vocabulary/archer-daniels-midland-vocabulary.yaml
   - type: JSONLD
     url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-ld/archer-daniels-midland-commodity-data-api-context.jsonld
+  - type: Blog
+    url: https://www.adm.com/en-us/news/adm-stories/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
