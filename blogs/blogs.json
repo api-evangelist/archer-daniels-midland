@@ -1,0 +1,18 @@
+{
+  "repo": "archer-daniels-midland",
+  "feeds": [
+    {
+      "source": "https://www.adm.com/en-us/news/adm-stories/",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-ld/archer-daniels-midland-commodity-data-api-context.jsonld",
+      "feed_url": "https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-ld/archer-daniels-midland-commodity-data-api-context.jsonld",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 2
+}
