@@ -34,6 +34,8 @@ apis:
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/openapi/archer-daniels-midland-commodity-data-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/archer-daniels-midland-agentic-access.yml
   - type: DomainSecurity
     url: security/archer-daniels-midland-domain-security.yml
   - type: Authentication
