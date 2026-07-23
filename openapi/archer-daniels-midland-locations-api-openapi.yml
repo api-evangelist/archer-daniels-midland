@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Archer Daniels Midland Commodity Data Commodities Locations API
+  description: The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: ADM
+    url: https://www.adm.com/en-us/
+servers:
+- url: https://api.adm.com/v1
+  description: ADM API Production
+security:
+- apiKey: []
+tags:
+- name: Locations
+  description: ADM global facility and processing plant locations
+paths:
+  /locations:
+    get:
+      operationId: listLocations
+      summary: Archer Daniels Midland List Locations
+      description: Retrieve a list of ADM processing facilities, grain elevators, and distribution centers with location and capability details.
+      tags:
+      - Locations
+      parameters:
+      - name: country
+        in: query
+        description: Filter by country code (ISO 3166-1 alpha-2)
+        schema:
+          type: string
+        example: US
+      - name: type
+        in: query
+        description: Filter by facility type
+        schema:
+          type: string
+          enum:
+          - processing-plant
+          - grain-elevator
+          - distribution-center
+          - port
+        example: processing-plant
+      responses:
+        '200':
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationList'
+              examples:
+                ListLocations200Example:
+                  summary: Default listLocations 200 response
+                  x-microcks-default: true
+                  value:
+                    locations:
+                    - id: ADM-DEC-001
+                      name: Decatur Processing Complex
+                      type: processing-plant
+                      country: US
+                      state: IL
+                      city: Decatur
+                      latitude: 39.8403
+                      longitude: -88.9548
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Location identifier
+          example: ADM-DEC-001
+        name:
+          type: string
+          description: Facility name
+          example: Decatur Processing Complex
+        type:
+          type: string
+          description: Facility type
+          enum:
+          - processing-plant
+          - grain-elevator
+          - distribution-center
+          - port
+          example: processing-plant
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+          example: US
+        state:
+          type: string
+          description: State or region
+          example: IL
+        city:
+          type: string
+          description: City
+          example: Decatur
+        latitude:
+          type: number
+          description: Geographic latitude
+          example: 39.8403
+        longitude:
+          type: number
+          description: Geographic longitude
+          example: -88.9548
+    LocationList:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+        count:
+          type: integer
+          description: Total location count
+          example: 200
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-ADM-API-Key
+      description: ADM API key for partner integrations

@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: Archer Daniels Midland Commodity Data Commodities Products API
+  description: The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.
+  version: '1.0'
+  x-generated-from: documentation
+  contact:
+    name: ADM
+    url: https://www.adm.com/en-us/
+servers:
+- url: https://api.adm.com/v1
+  description: ADM API Production
+security:
+- apiKey: []
+tags:
+- name: Products
+  description: ADM food ingredients and product catalog
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      summary: Archer Daniels Midland List Products
+      description: Retrieve a list of ADM processed food ingredients and agricultural products with specifications and nutritional data.
+      tags:
+      - Products
+      parameters:
+      - name: category
+        in: query
+        description: Filter by product category
+        schema:
+          type: string
+          enum:
+          - starches
+          - proteins
+          - oils
+          - sweeteners
+          - fibers
+          - flavors
+        example: proteins
+      - name: application
+        in: query
+        description: Filter by application area
+        schema:
+          type: string
+        example: bakery
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+              examples:
+                ListProducts200Example:
+                  summary: Default listProducts 200 response
+                  x-microcks-default: true
+                  value:
+                    products:
+                    - id: SOY-PROTEIN-CONC-001
+                      name: Soy Protein Concentrate
+                      category: proteins
+                      applications:
+                      - meat-analogs
+                      - dairy-alternatives
+                      protein: 70.0
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    ProductList:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total product count
+          example: 250
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product identifier
+          example: SOY-PROTEIN-CONC-001
+        name:
+          type: string
+          description: Product name
+          example: Soy Protein Concentrate
+        category:
+          type: string
+          description: Product category
+          enum:
+          - starches
+          - proteins
+          - oils
+          - sweeteners
+          - fibers
+          - flavors
+          example: proteins
+        applications:
+          type: array
+          items:
+            type: string
+          description: Food and beverage application areas
+          example:
+          - meat-analogs
+          - dairy-alternatives
+        protein:
+          type: number
+          description: Protein content percentage
+          example: 70.0
+        description:
+          type: string
+          description: Product description
+          example: High-quality soy protein concentrate for food applications
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-ADM-API-Key
+      description: ADM API key for partner integrations
