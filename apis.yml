@@ -3,7 +3,20 @@ name: Archer Daniels Midland
 description: Archer Daniels Midland (ADM) is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing, providing nutrition solutions for food, beverage, health, and 
   industrial markets worldwide.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/archer-daniels-midland.png
 tags:
   - Agriculture
   - Food Processing
@@ -16,23 +29,42 @@ created: '2026-03-23'
 modified: '2026-04-19'
 specificationVersion: '0.19'
 apis:
-  - aid: archer-daniels-midland:commodity-data-api
-    name: Archer Daniels Midland Commodity Data API
-    description: The ADM Commodity Data API represents data integration capabilities for agricultural commodity pricing, supply chain logistics, and product information for partner integrations.
-    humanURL: https://www.adm.com/en-us/
-    baseURL: https://api.adm.com
-    tags:
-    - Agriculture
-    - Commodities
-    - Food Processing
-    - Supply Chain
-    - Grain
-    - Nutrition
-    properties:
-    - type: Documentation
-      url: https://www.adm.com/en-us/
-    - type: OpenAPI
-      url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/openapi/archer-daniels-midland-commodity-data-api-openapi.yml
+- aid: archer-daniels-midland:archer-daniels-midland-commodities-api
+  name: Archer Daniels Midland Commodities API
+  description: Agricultural commodity pricing and market data
+  humanURL: https://www.adm.com/en-us/
+  baseURL: https://api.adm.com
+  tags:
+  - Commodities
+  properties:
+  - type: OpenAPI
+    url: openapi/archer-daniels-midland-commodities-api-openapi.yml
+  - type: Documentation
+    url: https://www.adm.com/en-us/
+- aid: archer-daniels-midland:archer-daniels-midland-locations-api
+  name: Archer Daniels Midland Locations API
+  description: ADM global facility and processing plant locations
+  humanURL: https://www.adm.com/en-us/
+  baseURL: https://api.adm.com
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/archer-daniels-midland-locations-api-openapi.yml
+  - type: Documentation
+    url: https://www.adm.com/en-us/
+- aid: archer-daniels-midland:archer-daniels-midland-products-api
+  name: Archer Daniels Midland Products API
+  description: ADM food ingredients and product catalog
+  humanURL: https://www.adm.com/en-us/
+  baseURL: https://api.adm.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/archer-daniels-midland-products-api-openapi.yml
+  - type: Documentation
+    url: https://www.adm.com/en-us/
 common:
   - type: AgenticAccess
     url: agentic-access/archer-daniels-midland-agentic-access.yml
