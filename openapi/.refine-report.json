@@ -1,0 +1,18 @@
+{
+  "provider": "archer-daniels-midland",
+  "sources": [
+    "archer-daniels-midland-commodities-api-openapi.yml",
+    "archer-daniels-midland-locations-api-openapi.yml",
+    "archer-daniels-midland-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "archer-daniels-midland-commodities-api-openapi.yml",
+    "archer-daniels-midland-locations-api-openapi.yml",
+    "archer-daniels-midland-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
