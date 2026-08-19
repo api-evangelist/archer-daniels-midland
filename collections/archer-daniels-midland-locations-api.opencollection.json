@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Archer Daniels Midland Commodity Data Commodities Locations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ADM-API-Key",
+      "value": "{{X-ADM-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/locations",
+            "params": [
+              {
+                "name": "country",
+                "value": "US",
+                "type": "query",
+                "description": "Filter by country code (ISO 3166-1 alpha-2)"
+              },
+              {
+                "name": "type",
+                "value": "processing-plant",
+                "type": "query",
+                "description": "Filter by facility type"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of ADM processing facilities, grain elevators, and distribution centers with location and capability details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

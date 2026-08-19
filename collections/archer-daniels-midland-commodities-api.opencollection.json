@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Archer Daniels Midland Commodity Data Commodities API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ADM-API-Key",
+      "value": "{{X-ADM-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commodities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Commodities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/commodities",
+            "params": [
+              {
+                "name": "type",
+                "value": "corn",
+                "type": "query",
+                "description": "Filter by commodity type (corn, soybeans, wheat, canola, etc.)"
+              },
+              {
+                "name": "region",
+                "value": "US-MIDWEST",
+                "type": "query",
+                "description": "Filter by sourcing region"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of agricultural commodities with current pricing, market trends, and availability information."
+        },
+        {
+          "info": {
+            "name": "Archer Daniels Midland Get Commodity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/commodities/:commodityId",
+            "params": [
+              {
+                "name": "commodityId",
+                "value": "CORN-US",
+                "type": "path",
+                "description": "Commodity identifier"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve detailed data for a specific agricultural commodity including price history."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

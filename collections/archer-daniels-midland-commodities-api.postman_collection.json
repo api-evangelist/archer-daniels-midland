@@ -1,0 +1,433 @@
+{
+  "item": [
+    {
+      "id": "8fafa39c-124b-4fe9-a240-b699d1c415d6",
+      "name": "Commodities",
+      "description": {
+        "content": "Agricultural commodity pricing and market data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b26b93d-6cc1-44a7-aae0-b8b56db96656",
+          "name": "Archer Daniels Midland List Commodities",
+          "request": {
+            "name": "Archer Daniels Midland List Commodities",
+            "description": {
+              "content": "Retrieve a list of agricultural commodities with current pricing, market trends, and availability information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commodities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by commodity type (corn, soybeans, wheat, canola, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Filter by sourcing region"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ADM-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ac34d14a-57c0-459f-95ce-ea397e6ac367",
+              "name": "List of commodities with pricing data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commodities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "corn"
+                    },
+                    {
+                      "key": "region",
+                      "value": "US-MIDWEST"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commodities\": [\n    {\n      \"id\": \"CORN-US\",\n      \"name\": \"Yellow Corn\",\n      \"type\": \"corn\",\n      \"currentPrice\": 4.85,\n      \"currency\": \"USD\",\n      \"unit\": \"bushel\",\n      \"priceDate\": \"2026-04-19\"\n    }\n  ],\n  \"count\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "199d8de9-e542-4e3c-a87c-714124f60e0f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commodities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "corn"
+                    },
+                    {
+                      "key": "region",
+                      "value": "US-MIDWEST"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57bb38bf-342c-4bc5-a76f-caf37c053e24",
+          "name": "Archer Daniels Midland Get Commodity",
+          "request": {
+            "name": "Archer Daniels Midland Get Commodity",
+            "description": {
+              "content": "Retrieve detailed data for a specific agricultural commodity including price history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commodities",
+                ":commodityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commodityId",
+                  "description": "(Required) Commodity identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ADM-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cea9ee81-25c4-4798-b16f-19500d7a8421",
+              "name": "Commodity details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commodities",
+                    ":commodityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commodityId",
+                      "description": "(Required) Commodity identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"CORN-US\",\n  \"name\": \"Yellow Corn\",\n  \"type\": \"corn\",\n  \"currentPrice\": 4.85,\n  \"currency\": \"USD\",\n  \"unit\": \"bushel\",\n  \"priceDate\": \"2026-04-19\",\n  \"weekHigh\": 5.1,\n  \"weekLow\": 4.72\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c64aa921-ab64-4533-afee-f51108b4859b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commodities",
+                    ":commodityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commodityId",
+                      "description": "(Required) Commodity identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f554e452-73aa-4c37-939a-193fd2230d11",
+              "name": "Commodity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commodities",
+                    ":commodityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commodityId",
+                      "description": "(Required) Commodity identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.adm.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-ADM-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "276ea5f4-a649-4154-a8f6-d0047e647354",
+    "name": "Archer Daniels Midland Commodity Data Commodities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.\n\nContact Support:\n Name: ADM",
+      "type": "text/plain"
+    }
+  }
+}

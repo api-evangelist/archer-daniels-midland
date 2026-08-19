@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "8b8c08e3-4be1-4fef-9246-0196151af6ad",
+      "name": "Products",
+      "description": {
+        "content": "ADM food ingredients and product catalog",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90e3768f-7520-41a5-ad4e-9e2eb4f05670",
+          "name": "Archer Daniels Midland List Products",
+          "request": {
+            "name": "Archer Daniels Midland List Products",
+            "description": {
+              "content": "Retrieve a list of ADM processed food ingredients and agricultural products with specifications and nutritional data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by product category"
+                },
+                {
+                  "disabled": false,
+                  "key": "application",
+                  "value": "<string>",
+                  "description": "Filter by application area"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ADM-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dde6744-373f-4f0c-9bd5-e87682d682a1",
+              "name": "List of products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "proteins"
+                    },
+                    {
+                      "key": "application",
+                      "value": "bakery"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"id\": \"SOY-PROTEIN-CONC-001\",\n      \"name\": \"Soy Protein Concentrate\",\n      \"category\": \"proteins\",\n      \"applications\": [\n        \"meat-analogs\",\n        \"dairy-alternatives\"\n      ],\n      \"protein\": 70\n    }\n  ],\n  \"count\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75fd850-04c4-41e2-9a97-74b9385a5272",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "proteins"
+                    },
+                    {
+                      "key": "application",
+                      "value": "bakery"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ADM-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.adm.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-ADM-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3212f5ec-21f4-44e7-924f-aded156723a9",
+    "name": "Archer Daniels Midland Commodity Data Commodities Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.\n\nContact Support:\n Name: ADM",
+      "type": "text/plain"
+    }
+  }
+}

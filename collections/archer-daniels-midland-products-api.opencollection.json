@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Archer Daniels Midland Commodity Data Commodities Products API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ADM-API-Key",
+      "value": "{{X-ADM-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Archer Daniels Midland List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.adm.com/v1/products",
+            "params": [
+              {
+                "name": "category",
+                "value": "proteins",
+                "type": "query",
+                "description": "Filter by product category"
+              },
+              {
+                "name": "application",
+                "value": "bakery",
+                "type": "query",
+                "description": "Filter by application area"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ADM-API-Key",
+              "value": "{{X-ADM-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of ADM processed food ingredients and agricultural products with specifications and nutritional data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
