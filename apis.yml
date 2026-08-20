@@ -59,6 +59,8 @@ apis:
   humanURL: https://www.adm.com/en-us/
   baseURL: https://api.adm.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
