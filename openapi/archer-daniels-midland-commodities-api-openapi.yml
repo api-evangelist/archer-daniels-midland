@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Archer Daniels Midland Commodity Data Commodities API
   description: The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.
@@ -130,23 +130,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CommodityDetail:
-      allOf:
-      - $ref: '#/components/schemas/Commodity'
-      - type: object
-        properties:
-          weekHigh:
-            type: number
-            description: 52-week high price
-            example: 5.1
-          weekLow:
-            type: number
-            description: 52-week low price
-            example: 4.72
-          volume:
-            type: integer
-            description: Daily trading volume in bushels
-            example: 125000000
     ErrorResponse:
       type: object
       properties:
@@ -158,6 +141,17 @@ components:
           type: integer
           description: Error code
           example: 401
+    CommodityList:
+      type: object
+      properties:
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+        count:
+          type: integer
+          description: Total commodity count
+          example: 15
     Commodity:
       type: object
       properties:
@@ -197,17 +191,23 @@ components:
           format: date
           description: Date of price quote
           example: '2026-04-19'
-    CommodityList:
-      type: object
-      properties:
-        commodities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Commodity'
-        count:
-          type: integer
-          description: Total commodity count
-          example: 15
+    CommodityDetail:
+      allOf:
+      - $ref: '#/components/schemas/Commodity'
+      - type: object
+        properties:
+          weekHigh:
+            type: number
+            description: 52-week high price
+            example: 5.1
+          weekLow:
+            type: number
+            description: 52-week low price
+            example: 4.72
+          volume:
+            type: integer
+            description: Daily trading volume in bushels
+            example: 125000000
   securitySchemes:
     apiKey:
       type: apiKey
