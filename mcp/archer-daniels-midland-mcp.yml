@@ -1,0 +1,23 @@
+generated: '2026-09-04'
+method: searched
+status: none
+source: >-
+  searched for an ADM-hosted or ADM-published MCP server (web search, npm, PyPI, GitHub org lookup)
+  and probed ADM's own hosts for MCP discovery documents — 2026-09-04
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+note: >-
+  ADM ships no MCP server, hosted or local. No /.well-known/oauth-protected-resource and no
+  /.well-known/ai-plugin.json on www.adm.com or adm.com (both 404). No npm or PyPI package. No
+  GitHub organisation. api.adm.com — the host every apis.yml baseURL points at — does not resolve
+  at all (NXDOMAIN), so there is no host on which an MCP endpoint could be probed.
+  NO CANDIDATE TOOL LIST WAS DERIVED. The three OpenAPI documents in openapi/ are
+  API-Evangelist-authored (x-generated-from: documentation) and describe operations on a host that
+  does not exist; deriving MCP tools from them would manufacture an agent surface for an API that
+  has never been observed to run. An honest absence is the correct record here.
+tools: []

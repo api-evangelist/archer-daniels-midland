@@ -4,11 +4,15 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Archer Daniels Midland
 providerId: archer-daniels-midland
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-04'
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://www.adm.com/llms.txt, https://www.adm.com/en-us/products-services/,
+  https://www.adm.com/en-us/procurement/ and a sitemap sweep of www.adm.com — searched 2026-09-04.
+  Supersedes a 2026-05-04 bulk-sweep placeholder that carried an invented "Contact Sales" plan row;
+  the honest finding is that ADM publishes no API plans of any kind.
+reconciled: true
 tags:
 - Agriculture
 - Food Processing
@@ -16,32 +20,26 @@ tags:
 - Supply Chain
 - Fortune 100
 - Nutrition
-description: Archer Daniels Midland does not publish a public API plans / pricing page. This artifact
-  records the absence of a self-serve commercial surface; see notes for research findings.
-notes: ADM does not publish public API pricing. The Commodity Data API is a partner-integration surface;
-  commercial terms are negotiated directly with ADM and are not exposed via a public plans page.
+plan_count: 0
+description: >-
+  Archer Daniels Midland publishes no API pricing, no plans page, and no self-serve or
+  contact-sales commercial surface for an API. This is not an enterprise "contact us" tier that we
+  could not price — it is the absence of any published API product to price.
+notes: >-
+  ADM runs no public developer program. Its own llms.txt (HTTP 200, 7,412 bytes) enumerates the
+  company's key pages and names no API, no developer portal, and no pricing for one. Commercial
+  relationships with ADM are supplier and customer contracts negotiated directly; indirect
+  procurement runs through Coupa and supplier ordering through EDI over third-party VANs, neither
+  of which is an ADM-published API plan. The host every apis.yml baseURL names, api.adm.com, does
+  not resolve.
 sources:
-- https://www.adm.com
-plans:
-- id: archer-daniels-midland-contact-sales
-  name: Contact Sales
-  type: enterprise
-  description: No published self-serve plan. Commercial access is arranged directly with the provider;
-    quotas and pricing are governed by individual customer agreements.
-  entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
-    geo: global
-    unit: 1
-    price: contact sales
-    userMultiplied: false
-  elements:
-  - name: Negotiated Commercial Terms
-  - name: Partner Onboarding
+- url: https://www.adm.com/llms.txt
+  status: 200
+- url: https://www.adm.com/en-us/products-services/
+  status: 200
+- url: https://www.adm.com/en-us/procurement/
+  status: 200
+plans: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

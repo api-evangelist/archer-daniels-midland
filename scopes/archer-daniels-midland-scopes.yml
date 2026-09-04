@@ -1,0 +1,47 @@
+generated: '2026-09-04'
+method: probed
+source: https://www.adm.com/.well-known/openid-configuration
+docs: null
+note: >-
+  These scopes are not read from an ADM API product — ADM publishes no developer portal and no API
+  reference. They are read verbatim from the OpenID Connect discovery document ADM's own
+  www.adm.com host serves (HTTP 200, application/json, 2026-09-04). The issuer is
+  https://www.adm.com/ and the endpoints sit under /api/episerver/connect/, i.e. this is the
+  Optimizely (Episerver) CMS authorization server that fronts adm.com itself. Recorded because it
+  is a real, first-party, machine-readable authorization surface on the company's domain; NOT
+  because ADM sells API access under these scopes. The three OpenAPI documents in openapi/ are
+  API-Evangelist-authored (x-generated-from: documentation) and declare an apiKey scheme, not
+  OAuth, so nothing here was derived from them.
+provider_metadata:
+  issuer: https://www.adm.com/
+  authorization_endpoint: https://www.adm.com/api/episerver/connect/authorize
+  token_endpoint: https://www.adm.com/api/episerver/connect/token
+  userinfo_endpoint: https://www.adm.com/api/episerver/connect/userinfo
+  end_session_endpoint: https://www.adm.com/api/episerver/connect/logout
+  jwks_uri: https://www.adm.com/.well-known/jwks
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  - client_credentials
+  code_challenge_methods_supported:
+  - S256
+  token_endpoint_auth_methods_supported:
+  - client_secret_basic
+  - client_secret_post
+scope_count: 5
+scopes:
+- name: openid
+  description: OpenID Connect — request an ID token for the authenticated subject.
+  source: scopes_supported in the published discovery document
+- name: offline_access
+  description: Issue a refresh token so the client can renew access without the user present.
+  source: scopes_supported in the published discovery document
+- name: profile
+  description: Access the subject's profile claims.
+  source: scopes_supported in the published discovery document
+- name: email
+  description: Access the subject's email claim.
+  source: scopes_supported in the published discovery document
+- name: roles
+  description: Access the subject's role claim, used by the CMS for content authorization.
+  source: scopes_supported in the published discovery document

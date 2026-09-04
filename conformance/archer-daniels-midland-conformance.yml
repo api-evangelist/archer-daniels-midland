@@ -1,0 +1,69 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  live probes of www.adm.com (2026-09-04) plus review of the three API-Evangelist-authored OpenAPI
+  documents in openapi/. Nothing here is asserted from marketing prose.
+note: >-
+  ADM publishes no API contract of its own, so most cross-cutting API standards are simply not
+  applicable rather than failed. The two positive entries are evidenced by a machine-readable
+  document ADM serves from its own host. Entries recorded false are recorded false because a probe
+  or a read of the repo's own artifacts showed the thing absent — not because it was not looked for.
+conformance:
+- id: oidc
+  name: OpenID Connect Discovery 1.0
+  conforms: true
+  evidence: https://www.adm.com/.well-known/openid-configuration
+  note: >-
+    HTTP 200, application/json, a well-formed OP metadata document with issuer,
+    authorization_endpoint, token_endpoint, userinfo_endpoint, jwks_uri, id_token signing algs and
+    subject_types_supported. Emitted by the Optimizely/Episerver CMS running adm.com; it governs
+    website authentication, not an API product.
+- id: oauth2
+  name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  conforms: true
+  evidence: https://www.adm.com/.well-known/oauth-authorization-server
+  note: >-
+    HTTP 200, byte-identical to the OIDC discovery document. Declares authorization_code,
+    refresh_token and client_credentials grants and PKCE S256.
+- id: pkce
+  name: PKCE (RFC 7636)
+  conforms: true
+  evidence: https://www.adm.com/.well-known/openid-configuration
+  note: code_challenge_methods_supported declares S256.
+- id: rfc9457
+  name: Problem Details for HTTP APIs (RFC 9457)
+  conforms: false
+  evidence: openapi/archer-daniels-midland-commodities-api-openapi.yml
+  note: >-
+    No application/problem+json response is declared anywhere in the repo, and there is no
+    provider-published contract to check.
+- id: rfc8594
+  name: Sunset HTTP Header (RFC 8594)
+  conforms: false
+  evidence: https://www.adm.com/llms.txt
+  note: No deprecation or sunset policy is published; ADM's llms.txt names no API surface at all.
+- id: rfc9116
+  name: security.txt (RFC 9116)
+  conforms: false
+  evidence: https://www.adm.com/.well-known/security.txt
+  note: HTTP 404 on www.adm.com and adm.com.
+- id: llmstxt
+  name: llms.txt
+  conforms: true
+  evidence: https://www.adm.com/llms.txt
+  note: >-
+    HTTP 200, text/plain, 7,412 bytes, correct llms.txt shape — H1 title, blockquote summary,
+    H2 sections and a Key Pages link list. Describes the corporate site; names no API.
+domain_standards:
+- id: x12-edi
+  name: ANSI ASC X12 EDI
+  conforms: false
+  applicable: true
+  evidence: https://www.adm.com/en-us/procurement/
+  note: >-
+    ADM trades with suppliers over EDI — third-party VANs publish ADM trading-partner profiles and
+    ADM's own procurement pages describe electronic ordering and invoicing through Coupa. NOT
+    recorded as conformant: ADM publishes no X12 implementation guide, transaction-set list or
+    partner spec on its own domain that could be read as a contract, and a third-party VAN's
+    marketing page is not the provider declaring a standard. Recorded so the gap is visible rather
+    than invisible: this is the domain standard ADM's market actually runs on.

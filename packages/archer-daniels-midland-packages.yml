@@ -1,0 +1,17 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  npm registry search (registry.npmjs.org/-/v1/search), PyPI, GitHub repository search, and
+  https://www.adm.com/llms.txt — searched 2026-09-04
+package_count: 0
+official_package_count: 0
+note: >-
+  ADM publishes no first-party client libraries. Searched npm (no @adm / archer-daniels-midland
+  scope or package; the "adm" string on npm belongs to unrelated projects such as adm-zip),
+  PyPI (adm-api 404), and GitHub — repository search for "archer daniels midland api" returns
+  exactly one repository, api-evangelist/archer-daniels-midland, which is this profile. No
+  github.com/adm, /archer-daniels-midland, /admworldwide or /adm-inc organisation exists (all
+  HTTP 404 from the GitHub orgs API). ADM's own llms.txt, which enumerates the company's key pages,
+  names no SDK, no developer portal and no API. There is no SDK/CLI/SourceCode link in apis.yml to
+  derive a candidate from. An honest zero, not an unchecked one.
+packages: []

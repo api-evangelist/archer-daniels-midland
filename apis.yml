@@ -38,7 +38,7 @@ tags:
   - Nutrition
 url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/apis.yml
 created: '2026-03-23'
-modified: '2026-04-19'
+modified: '2026-09-04'
 specificationVersion: '0.23'
 apis:
 - aid: archer-daniels-midland:archer-daniels-midland-commodities-api
@@ -51,8 +51,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/archer-daniels-midland-commodities-api-openapi.yml
-  - type: Documentation
-    url: https://www.adm.com/en-us/
 - aid: archer-daniels-midland:archer-daniels-midland-locations-api
   name: Archer Daniels Midland Locations API
   description: ADM global facility and processing plant locations
@@ -63,8 +61,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/archer-daniels-midland-locations-api-openapi.yml
-  - type: Documentation
-    url: https://www.adm.com/en-us/
 - aid: archer-daniels-midland:archer-daniels-midland-products-api
   name: Archer Daniels Midland Products API
   description: ADM food ingredients and product catalog
@@ -77,9 +73,9 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/archer-daniels-midland-products-api-openapi.yml
-  - type: Documentation
-    url: https://www.adm.com/en-us/
 common:
+  - type: Website
+    url: https://www.adm.com/
   - type: AgenticAccess
     url: agentic-access/archer-daniels-midland-agentic-access.yml
   - type: DomainSecurity
@@ -87,7 +83,7 @@ common:
   - type: Authentication
     url: authentication/archer-daniels-midland-authentication.yml
   - type: LinkedIn
-    url: https://www.linkedin.com/company/archer-daniels-midland
+    url: https://www.linkedin.com/company/adm
   - type: Portal
     url: https://www.adm.com/en-us/
   - type: Features
@@ -129,7 +125,53 @@ common:
   - type: JSONLD
     url: https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-ld/archer-daniels-midland-commodity-data-api-context.jsonld
   - type: Blog
-    url: https://www.adm.com/en-us/news/adm-stories/
+    url: https://www.adm.com/en-us/news/
+  - type: WellKnown
+    url: well-known/archer-daniels-midland-well-known.yml
+  - type: LLMsTxt
+    url: llms/archer-daniels-midland-llms.txt
+  - type: OAuthScopes
+    url: scopes/archer-daniels-midland-scopes.yml
+  - type: Conformance
+    url: conformance/archer-daniels-midland-conformance.yml
+  - type: Conventions
+    url: conventions/archer-daniels-midland-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/archer-daniels-midland-lifecycle.yml
+  - type: Plans
+    url: plans/archer-daniels-midland-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/archer-daniels-midland-rate-limits.yml
+  - type: TermsOfService
+    url: https://www.adm.com/en-us/legal/terms-of-use/
+  - type: PrivacyPolicy
+    url: https://www.adm.com/en-us/legal/privacy/
+  - type: Support
+    url: https://www.adm.com/en-us/contact-us/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    ADM runs no public developer program at all — its own llms.txt enumerates every key page on
+    adm.com and names no API, developer portal or SDK, and api.adm.com, the host this record's
+    baseURLs point at, has no DNS record whatsoever.
+  evidence:
+  - url: https://www.adm.com/llms.txt
+    status: 200
+  - url: https://api.adm.com/
+    status: 0
+  - url: https://developer.adm.com/
+    status: 0
+  - url: https://www.adm.com/.well-known/api-catalog
+    status: 404
+  - url: https://www.adm.com/.well-known/openid-configuration
+    status: 200
+  checked: '2026-09-04'

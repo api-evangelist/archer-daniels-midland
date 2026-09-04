@@ -1,0 +1,92 @@
+generated: '2026-09-04'
+method: probed
+source: live HTTPS probes of every host in apis.yml (registrable domain + www, each apis[].baseURL
+  host, every OpenAPI servers[] host, and the investor sub-site)
+note: >-
+  ADM serves a real OpenID Connect / OAuth 2.0 authorization-server discovery document and a JWKS
+  from its own www.adm.com host. Both are emitted by the Optimizely (Episerver) CMS that runs
+  adm.com — the issuer is https://www.adm.com/ and the endpoints are under /api/episerver/connect/ —
+  so they describe the website's own content-management authorization server, not a customer-facing
+  API product. They are still first-party, published, machine-readable documents on ADM's domain and
+  are recorded verbatim as such. /.well-known/security.txt, /api-catalog, /ai-plugin.json,
+  /agent-card.json and /oauth-protected-resource all 404 with the site's HTML 404 page.
+  api.adm.com — the baseURL carried in apis.yml and in every servers[] block of the three
+  AE-authored OpenAPI documents — DOES NOT RESOLVE (NXDOMAIN, no A/AAAA record), so no
+  /.well-known/ path could be probed there at all; that is recorded as an honest connection
+  failure, not a 404.
+  investors.adm.com answers HTTP 200 with an 11-byte "Invalid key" body for EVERY /.well-known/
+  path, including ones that cannot exist. That is an SPA/edge catch-all, not a document, and every
+  path on that host is therefore recorded as a miss.
+hosts:
+- host: www.adm.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: archer-daniels-midland-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: archer-daniels-midland-oauth-authorization-server.json
+  - path: /.well-known/jwks
+    status: 200
+    file: archer-daniels-midland-jwks.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+- host: adm.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: redirects to www.adm.com and returns the identical document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: redirects to www.adm.com and returns the identical document
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+- host: api.adm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+    note: NXDOMAIN — api.adm.com has no DNS record; the connection could not be opened
+  - path: /.well-known/openid-configuration
+    status: 0
+    note: NXDOMAIN — api.adm.com has no DNS record; the connection could not be opened
+  - path: /.well-known/api-catalog
+    status: 0
+    note: NXDOMAIN — api.adm.com has no DNS record; the connection could not be opened
+  - path: /.well-known/agent-card.json
+    status: 0
+    note: NXDOMAIN — api.adm.com has no DNS record; the connection could not be opened
+- host: investors.adm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: 'MISS — 11-byte "Invalid key" catch-all body, not a security.txt; every /.well-known/
+      path on this host returns the same response'
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: 'MISS — same "Invalid key" catch-all body, not a discovery document'
+  - path: /.well-known/api-catalog
+    status: 200
+    note: 'MISS — same "Invalid key" catch-all body, not an api-catalog'
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: 'MISS — same "Invalid key" catch-all body, not an agent card'

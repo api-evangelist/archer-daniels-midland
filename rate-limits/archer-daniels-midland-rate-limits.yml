@@ -4,11 +4,13 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Archer Daniels Midland
 providerId: archer-daniels-midland
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-04'
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://www.adm.com/llms.txt and a sitemap sweep of www.adm.com for an API reference — searched
+  2026-09-04. Supersedes a 2026-05-04 bulk-sweep placeholder.
+reconciled: true
 tags:
 - Agriculture
 - Food Processing
@@ -19,27 +21,23 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Archer Daniels Midland does not publish concrete rate-limit numbers, throttling thresholds,
-  or response-header conventions. This artifact records the gap; see notes for research findings.
-notes: No public rate-limit documentation. Throughput is governed by individual partner integration contracts.
+limit_count: 0
+description: >-
+  Archer Daniels Midland publishes no rate limits, no throttling thresholds and no rate-limit
+  response-header convention, because it publishes no API reference at all.
+notes: >-
+  Nothing here was inferred. No X-RateLimit-*, RateLimit-* or Retry-After convention is documented
+  on any ADM page, and none could be observed on a live response: api.adm.com, the host named by
+  every baseURL in apis.yml and by every servers[] block in openapi/, has no DNS record. The 429
+  status code previously recorded in this file as ADM's throttled response was a bulk-sweep
+  default, not an observation, and has been removed.
 sources:
-- https://www.adm.com
-responseCodes:
-  throttled: 429
-limits:
-- name: Per-contract limits
-  scope: account
-  metric: varies
-  limit: see provider integration agreement
-  notes: No public rate-limit numbers; throughput is governed by individual customer or partner contracts.
-policies:
-- name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header
-    that may be returned, even though the provider does not publish formal retry semantics.
-- name: Contract-Scoped Limits
-  description: Quotas, burst, and concurrency ceilings are governed by the individual customer or partner
-    contract rather than a public policy. Coordinate with the provider to confirm thresholds before scaling
-    traffic.
+- url: https://www.adm.com/llms.txt
+  status: 200
+- url: https://www.adm.com/en-us/
+  status: 200
+limits: []
+policies: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

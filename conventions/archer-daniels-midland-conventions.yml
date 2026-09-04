@@ -1,0 +1,65 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://www.adm.com/llms.txt and a full sweep of ADM's public site for an API reference
+  (none exists); cross-read against the API-Evangelist-authored documents in openapi/
+note: >-
+  ADM publishes no API reference, so there are no provider-stated runtime semantics to record. Every
+  block below is therefore either `none` (checked, the provider states nothing) or `na` (the concept
+  does not apply because there is no observed API). Nothing in this file is derived from
+  openapi/, because those three documents are API-Evangelist-authored
+  (x-generated-from: documentation) against a host, api.adm.com, that does not resolve — deriving
+  conventions from them would present our own assumptions as ADM's published semantics.
+auth_style:
+  documented: false
+  note: >-
+    The only published authorization surface on an ADM host is the Optimizely/Episerver CMS
+    OpenID Connect server at https://www.adm.com/api/episerver/connect/ (see
+    scopes/archer-daniels-midland-scopes.yml). It authenticates the website, not an API product.
+idempotency:
+  coverage: na
+  scope: []
+  header: null
+  documented: false
+  note: >-
+    na, not none — there is no observed write surface to protect. No Idempotency-Key header or
+    replay-protection mechanism is documented anywhere on adm.com.
+reversibility:
+  grade: na
+  reversals: []
+  note: >-
+    na — ADM exposes no observed write operations, so there is nothing to reverse and no window to
+    state. No cancel/refund/void/restore semantics are published. Recorded as na rather than a zero
+    so it leaves the denominator honestly.
+dry_run_mode:
+  supported: na
+  note: na — no observed write surface to rehearse against.
+pagination:
+  documented: false
+  style: null
+  note: No published API reference; no pagination convention stated by the provider.
+field_expansion:
+  documented: false
+metadata:
+  documented: false
+request_id_tracing:
+  documented: false
+  header: null
+versioning:
+  documented: false
+  note: See lifecycle/archer-daniels-midland-lifecycle.yml — no versioning policy published.
+error_envelope:
+  documented: false
+  format: null
+  note: No application/problem+json or other error envelope is published. See
+    conformance/archer-daniels-midland-conformance.yml (rfc9457 = false).
+rate_limit_signaling:
+  documented: false
+  headers: []
+  note: See rate-limits/archer-daniels-midland-rate-limits.yml — no published limits or headers.
+cross_links:
+- authentication/archer-daniels-midland-authentication.yml
+- scopes/archer-daniels-midland-scopes.yml
+- lifecycle/archer-daniels-midland-lifecycle.yml
+- rate-limits/archer-daniels-midland-rate-limits.yml
+- conformance/archer-daniels-midland-conformance.yml

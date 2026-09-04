@@ -1,16 +1,51 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/archer-daniels-midland-commodity-data-api-openapi.yml
+generated: '2026-09-04'
+method: probed
+source: >-
+  https://www.adm.com/.well-known/openid-configuration (probed 2026-09-04) for the OIDC scheme;
+  openapi/archer-daniels-midland-commodities-api-openapi.yml,
+  openapi/archer-daniels-midland-locations-api-openapi.yml and
+  openapi/archer-daniels-midland-products-api-openapi.yml for the apiKey scheme
+note: >-
+  ADM publishes no API authentication documentation — there is no developer portal, no API
+  reference, and the company's own llms.txt names no API. Read the two schemes below very
+  differently: the openIdConnect scheme was fetched from a live document ADM serves on its own
+  host; the apiKey scheme was DERIVED from OpenAPI documents that API Evangelist authored
+  (x-generated-from: documentation) against api.adm.com, a host that does not resolve. The header
+  name X-ADM-API-Key has never been observed on a live ADM response and should not be treated as a
+  provider-published fact.
 summary:
   types:
+  - openIdConnect
   - apiKey
   api_key_in:
   - header
 schemes:
+- name: openIdConnect
+  type: openIdConnect
+  openIdConnectUrl: https://www.adm.com/.well-known/openid-configuration
+  description: >-
+    OpenID Connect / OAuth 2.0 authorization server published by ADM on www.adm.com. Issuer
+    https://www.adm.com/; endpoints under /api/episerver/connect/. Grants: authorization_code,
+    refresh_token, client_credentials. PKCE S256 supported. Client authentication:
+    client_secret_basic or client_secret_post. This is the Optimizely (Episerver) CMS authorization
+    server that fronts the adm.com website — it is genuinely first-party and machine-readable, but
+    it is not a customer-facing API product.
+  method: probed
+  observed_status: 200
+  sources:
+  - https://www.adm.com/.well-known/openid-configuration
+  - https://www.adm.com/.well-known/oauth-authorization-server
+  - well-known/archer-daniels-midland-openid-configuration.json
 - name: apiKey
   type: apiKey
   in: header
   parameter: X-ADM-API-Key
-  description: ADM API key for partner integrations
+  description: >-
+    API key header declared by the API-Evangelist-authored OpenAPI documents in this repo. NOT
+    verified against ADM: the host these documents name (api.adm.com) has no DNS record.
+  method: derived
+  verified: false
   sources:
-  - openapi/archer-daniels-midland-commodity-data-api-openapi.yml
+  - openapi/archer-daniels-midland-commodities-api-openapi.yml
+  - openapi/archer-daniels-midland-locations-api-openapi.yml
+  - openapi/archer-daniels-midland-products-api-openapi.yml

@@ -1,0 +1,31 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://www.adm.com/llms.txt, https://www.adm.com/en-us/, robots.txt + sitemap sweep, and DNS
+  probes of status.adm.com / trust.adm.com — searched and probed 2026-09-04
+summary:
+  versioning_policy: none
+  deprecation_policy: none
+  sunset_header: false
+  sla: none
+  status_page: none
+  changelog: none
+note: >-
+  ADM publishes no API lifecycle surface of any kind: no versioning policy, no deprecation or
+  sunset policy, no SLA, no API changelog, and no status page (status.adm.com and trust.adm.com
+  both NXDOMAIN). This is consistent with the rest of the record — ADM runs no public developer
+  program. The company does publish a corporate news feed and an annual sustainability report, but
+  neither is an API lifecycle document and neither is wired here as one.
+  api.adm.com does not resolve, so no Deprecation or Sunset response header could be observed on a
+  live call.
+deprecated_operations: []
+evidence:
+- url: https://www.adm.com/llms.txt
+  status: 200
+  note: names every key ADM page; no API, developer, status or changelog page among them
+- url: https://www.adm.com/en-us/news/
+  status: 200
+  note: corporate news, not an API changelog
+- url: https://status.adm.com/
+  status: 0
+  note: NXDOMAIN
