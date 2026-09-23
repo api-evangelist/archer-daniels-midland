@@ -130,28 +130,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
-    CommodityList:
-      type: object
-      properties:
-        commodities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Commodity'
-        count:
-          type: integer
-          description: Total commodity count
-          example: 15
+    CommodityDetail:
+      allOf:
+      - $ref: '#/components/schemas/Commodity'
+      - type: object
+        properties:
+          weekHigh:
+            type: number
+            description: 52-week high price
+            example: 5.1
+          weekLow:
+            type: number
+            description: 52-week low price
+            example: 4.72
+          volume:
+            type: integer
+            description: Daily trading volume in bushels
+            example: 125000000
     Commodity:
       type: object
       properties:
@@ -191,23 +186,28 @@ components:
           format: date
           description: Date of price quote
           example: '2026-04-19'
-    CommodityDetail:
-      allOf:
-      - $ref: '#/components/schemas/Commodity'
-      - type: object
-        properties:
-          weekHigh:
-            type: number
-            description: 52-week high price
-            example: 5.1
-          weekLow:
-            type: number
-            description: 52-week low price
-            example: 4.72
-          volume:
-            type: integer
-            description: Daily trading volume in bushels
-            example: 125000000
+    CommodityList:
+      type: object
+      properties:
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+        count:
+          type: integer
+          description: Total commodity count
+          example: 15
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
   securitySchemes:
     apiKey:
       type: apiKey

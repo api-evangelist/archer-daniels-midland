@@ -1,7 +1,9 @@
 ---
 title: How ADM and Brightseed are using AI to expand ...
 url: https://www.fooddive.com/news/adm-brightseed-gut-health-ai-artificial-intelligence-tech-plant-based-microbiome-immunity/647378/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Archer Daniels Midland" press release artificial intelligence'
 position: 2
 source: serpapi-google

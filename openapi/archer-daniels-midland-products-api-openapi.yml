@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Archer Daniels Midland Commodity Data Commodities Products API
+  title: Archer Daniels Midland Commodity Data Products API
   description: The Archer Daniels Midland (ADM) Commodity Data API provides access to agricultural commodity pricing, supply chain logistics, and product information for ADM partner integrations. ADM is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing.
   version: '1.0'
   x-generated-from: documentation
@@ -77,17 +77,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     ProductList:
       type: object
       properties:
@@ -137,6 +126,17 @@ components:
           type: string
           description: Product description
           example: High-quality soy protein concentrate for food applications
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
   securitySchemes:
     apiKey:
       type: apiKey
