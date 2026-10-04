@@ -77,6 +77,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ProductList:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total product count
+          example: 250
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     Product:
       type: object
       properties:
@@ -115,28 +137,6 @@ components:
           type: string
           description: Product description
           example: High-quality soy protein concentrate for food applications
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
-    ProductList:
-      type: object
-      properties:
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        count:
-          type: integer
-          description: Total product count
-          example: 250
   securitySchemes:
     apiKey:
       type: apiKey
