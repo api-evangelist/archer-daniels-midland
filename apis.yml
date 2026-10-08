@@ -76,6 +76,8 @@ apis:
   - type: OpenAPI
     url: openapi/archer-daniels-midland-products-api-openapi.yml
 common:
+  - type: FinOps
+    url: finops/archer-daniels-midland-finops.yml
   - type: Website
     url: https://www.adm.com/
   - type: AgenticAccess
