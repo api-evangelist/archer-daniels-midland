@@ -77,17 +77,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProductList:
-      type: object
-      properties:
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        count:
-          type: integer
-          description: Total product count
-          example: 250
     ErrorResponse:
       type: object
       properties:
@@ -137,6 +126,17 @@ components:
           type: string
           description: Product description
           example: High-quality soy protein concentrate for food applications
+    ProductList:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total product count
+          example: 250
   securitySchemes:
     apiKey:
       type: apiKey

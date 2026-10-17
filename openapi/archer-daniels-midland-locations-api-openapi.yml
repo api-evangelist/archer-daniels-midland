@@ -76,6 +76,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     LocationList:
       type: object
       properties:
@@ -127,17 +138,6 @@ components:
           type: number
           description: Geographic longitude
           example: -88.9548
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
   securitySchemes:
     apiKey:
       type: apiKey
