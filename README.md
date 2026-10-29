@@ -1,4 +1,4 @@
-# Archer Daniels Midland (archer-daniels-midland)
+# Archer Daniels Midland
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,63 +66,185 @@
 
 Archer Daniels Midland (ADM) is a Fortune 100 global leader in agricultural processing and food ingredient manufacturing, providing nutrition solutions for food, beverage, health, and industrial markets worldwide.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/apis.yml)
+**Areas:** Agriculture · Food Processing · Commodities · Supply Chain · Fortune 100 · Nutrition
 
-## Scope
+## Archer Daniels Midland on APIs.io
 
-- **Type:** Index
+Everything profiled for Archer Daniels Midland is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/archer-daniels-midland/](https://apis.io/providers/archer-daniels-midland/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Agriculture
-- Food Processing
-- Commodities
-- Supply Chain
-- Fortune 100
-- Nutrition
+- [Archer Daniels Midland Commodities API](https://apis.io/apis/archer-daniels-midland/archer-daniels-midland-commodities-api/) — Agricultural commodity pricing and market data
+- [Archer Daniels Midland Locations API](https://apis.io/apis/archer-daniels-midland/archer-daniels-midland-locations-api/) — ADM global facility and processing plant locations
+- [Archer Daniels Midland Products API](https://apis.io/apis/archer-daniels-midland/archer-daniels-midland-products-api/) — ADM food ingredients and product catalog
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-23
-- **Modified:** 2026-04-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Archer Daniels Midland Commodity Data API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The ADM Commodity Data API represents data integration capabilities for agricultural commodity pricing, supply chain logistics, and product information for partner integrations.
+- [Archer Daniels Midland Agentic Access](https://apis.io/agentic-access/archer-daniels-midland/archer-daniels-midland-agentic-access/)
 
-- **Human URL:** [https://www.adm.com/en-us/](https://www.adm.com/en-us/)
-- **Base URL:** `https://api.adm.com`
+#### JSON Schema (8)
 
-#### Tags
+The data models the API reads and writes.
 
-- Agriculture
-- Commodities
-- Food Processing
-- Supply Chain
-- Grain
-- Nutrition
+- [Commodity](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity/)
+- [CommodityDetail](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-detail/)
+- [CommodityList](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-list/)
+- [ErrorResponse](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-error-response/)
+- [Location](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location/)
+- [LocationList](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location-list/)
+- [Product](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product/)
+- [ProductList](https://apis.io/schemas/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product-list/)
 
-#### Properties
+#### JSON Structure (8)
 
-- [Documentation](https://www.adm.com/en-us/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/openapi/archer-daniels-midland-commodity-data-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/archer-daniels-midland-commodity-data-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/archer-daniels-midland-commodity-data-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Archer Daniels Midland Commodity Data Api Commodity Detail Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-detail-structure/)
+- [Archer Daniels Midland Commodity Data Api Commodity List Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-list-structure/)
+- [Archer Daniels Midland Commodity Data Api Commodity Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-structure/)
+- [Archer Daniels Midland Commodity Data Api Error Response Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-error-response-structure/)
+- [Archer Daniels Midland Commodity Data Api Location List Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location-list-structure/)
+- [Archer Daniels Midland Commodity Data Api Location Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location-structure/)
+- [Archer Daniels Midland Commodity Data Api Product List Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product-list-structure/)
+- [Archer Daniels Midland Commodity Data Api Product Structure](https://apis.io/json-structure/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/archer-daniels-midland)
-- [Portal](https://www.adm.com/en-us/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/rules/archer-daniels-midland-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/vocabulary/archer-daniels-midland-vocabulary.yaml)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/archer-daniels-midland/refs/heads/main/json-ld/archer-daniels-midland-commodity-data-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+- [Archer Daniels Midland Commodity Data Api Context](https://apis.io/jsonld/archer-daniels-midland/archer-daniels-midland-commodity-data-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Archer Daniels Midland Vocabulary](https://apis.io/vocabularies/archer-daniels-midland/archer-daniels-midland-vocabulary/)
+
+#### Examples (8)
+
+Example requests and responses.
+
+- [Archer Daniels Midland Commodity Data Api Commodity Detail Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-detail-example/)
+- [Archer Daniels Midland Commodity Data Api Commodity Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-example/)
+- [Archer Daniels Midland Commodity Data Api Commodity List Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-commodity-list-example/)
+- [Archer Daniels Midland Commodity Data Api Error Response Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-error-response-example/)
+- [Archer Daniels Midland Commodity Data Api Location Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location-example/)
+- [Archer Daniels Midland Commodity Data Api Location List Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-location-list-example/)
+- [Archer Daniels Midland Commodity Data Api Product Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product-example/)
+- [Archer Daniels Midland Commodity Data Api Product List Example](https://apis.io/examples/archer-daniels-midland/archer-daniels-midland-commodity-data-api-product-list-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Archer Daniels Midland Commodity Data Commodities API](https://apis.io/collections/archer-daniels-midland/open-archer-daniels-midland-commodities-api/)
+- [Archer Daniels Midland Commodity Data API](https://apis.io/collections/archer-daniels-midland/open-archer-daniels-midland-commodity-data-api/)
+- [Archer Daniels Midland Commodity Data Commodities Locations API](https://apis.io/collections/archer-daniels-midland/open-archer-daniels-midland-locations-api/)
+- [Archer Daniels Midland Commodity Data Commodities Products API](https://apis.io/collections/archer-daniels-midland/open-archer-daniels-midland-products-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Archer Daniels Midland — jsonschema rules](https://apis.io/rules/archer-daniels-midland/archer-daniels-midland-jsonschema-spectral-rules/)
+- [Archer Daniels Midland API Rules](https://apis.io/rules/archer-daniels-midland/archer-daniels-midland-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Archer Daniels Midland Authentication](https://apis.io/security/archer-daniels-midland/archer-daniels-midland-authentication/)
+- [Archer Daniels Midland Domain Security](https://apis.io/security/archer-daniels-midland/archer-daniels-midland-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Archer Daniels Midland Scopes](https://apis.io/scopes/archer-daniels-midland/archer-daniels-midland-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Archer Daniels Midland Plans Pricing](https://apis.io/plans/archer-daniels-midland/archer-daniels-midland-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Archer Daniels Midland Rate Limits](https://apis.io/rate-limits/archer-daniels-midland/archer-daniels-midland-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Archer Daniels Midland Finops](https://apis.io/finops/archer-daniels-midland/archer-daniels-midland-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.adm.com/)
+- [Support](https://www.adm.com/en-us/contact-us/)
+- [Blog](https://www.adm.com/en-us/news/)
+- [Terms of service](https://www.adm.com/en-us/legal/terms-of-use/)
+- [Privacy policy](https://www.adm.com/en-us/legal/privacy/)
+
+## API Evangelist rating
+
+**Kin Score 31.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 21.6 |
+| Contract governance | 45.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 21.1 |
+
+**Agent readiness 45.0** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/archer-daniels-midland/](https://apis.io/providers/archer-daniels-midland/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Archer Daniels Midland: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/archer-daniels-midland/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
